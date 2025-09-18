@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Car Dashboard Control Panel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding dashboard-bg">
+  <ion-grid>
+    <ion-row>
+      <!-- Air Conditioning -->
+      <ion-col size="6">
+        <ion-card class="control-card ac">
+          <ion-card-header>
+            <ion-icon name="snow-outline"></ion-icon>
+            <ion-card-title>Air Conditioning</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-range min="16" max="30" step="1" pin="true">
+              <ion-label slot="start">16°C</ion-label>
+              <ion-label slot="end">30°C</ion-label>
+            </ion-range>
+            <ion-input type="number" placeholder="19°C"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Radio Volume -->
+      <ion-col size="6">
+        <ion-card class="control-card volume">
+          <ion-card-header>
+            <ion-icon name="volume-high-outline"></ion-icon>
+            <ion-card-title>Radio Volume</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-range min="0" max="100" step="1" pin="true">
+              <ion-label slot="start">0</ion-label>
+              <ion-label slot="end">100</ion-label>
+            </ion-range>
+            <ion-input type="number" placeholder="30"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <!-- Headlight Brightness -->
+      <ion-col size="6">
+        <ion-card class="control-card brightness">
+          <ion-card-header>
+            <ion-icon name="bulb-outline"></ion-icon>
+            <ion-card-title>Headlight Brightness</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-range min="0" max="100" step="1" pin="true">
+              <ion-label slot="start">0%</ion-label>
+              <ion-label slot="end">100%</ion-label>
+            </ion-range>
+            <ion-input type="number" placeholder="50%"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Seat Heating -->
+      <ion-col size="6">
+        <ion-card class="control-card seat">
+          <ion-card-header>
+            <ion-icon name="flame-outline"></ion-icon>
+            <ion-card-title>Seat Heating</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-range min="0" max="5" step="1" pin="true">
+              <ion-label slot="start">0</ion-label>
+              <ion-label slot="end">5</ion-label>
+            </ion-range>
+            <ion-input type="number" placeholder="1"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
