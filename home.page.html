@@ -1,10 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Car Dashboard Control Panel</ion-title>
+    <ion-title class="toolbar-title">
+      Car Dashboard Control Panel
+    </ion-title>
+    <ion-avatar class="hero-avatar">
+      <label>
+        <input type="file" hidden (change)="onFileSelected($event)" />
+        <ion-img [src]="aceImg" class="hero-img"></ion-img>
+      </label>
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding dashboard-bg">
+<ion-content class="dashboard-bg" scroll-y="true">
   <ion-grid>
     <ion-row>
       <!-- Air Conditioning -->
@@ -13,13 +21,19 @@
           <ion-card-header>
             <ion-icon name="snow-outline"></ion-icon>
             <ion-card-title>Air Conditioning</ion-card-title>
+            <div class="value-indicator" [style.color]="getTextColor('acTemp')">{{dashboard.acTemp}}°C</div>
           </ion-card-header>
           <ion-card-content>
-            <ion-range min="16" max="30" step="1" pin="true">
-              <ion-label slot="start">16°C</ion-label>
-              <ion-label slot="end">30°C</ion-label>
+            <ion-range
+              min="16"
+              max="30"
+              step="1"
+              pin="true"
+              [(ngModel)]="dashboard.acTemp"
+              [style.--bar-background-active]="getSliderColor('acTemp')"
+              [style.--knob-background]="'#00c6ff'"
+              (ionChange)="updateValue('acTemp', $event.detail.value !== null && $event.detail.value !== undefined ? +$event.detail.value : undefined)">
             </ion-range>
-            <ion-input type="number" placeholder="19°C"></ion-input>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -30,13 +44,19 @@
           <ion-card-header>
             <ion-icon name="volume-high-outline"></ion-icon>
             <ion-card-title>Radio Volume</ion-card-title>
+            <div class="value-indicator" [style.color]="getTextColor('radioVolume')">{{dashboard.radioVolume}}</div>
           </ion-card-header>
           <ion-card-content>
-            <ion-range min="0" max="100" step="1" pin="true">
-              <ion-label slot="start">0</ion-label>
-              <ion-label slot="end">100</ion-label>
+            <ion-range
+              min="0"
+              max="100"
+              step="1"
+              pin="true"
+              [(ngModel)]="dashboard.radioVolume"
+              [style.--bar-background-active]="getSliderColor('radioVolume')"
+              [style.--knob-background]="'#00ff85'"
+              (ionChange)="updateValue('radioVolume', $event.detail.value !== null && $event.detail.value !== undefined ? +$event.detail.value : undefined)">
             </ion-range>
-            <ion-input type="number" placeholder="30"></ion-input>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -49,13 +69,19 @@
           <ion-card-header>
             <ion-icon name="bulb-outline"></ion-icon>
             <ion-card-title>Headlight Brightness</ion-card-title>
+            <div class="value-indicator" [style.color]="getTextColor('headlight')">{{dashboard.headlight}}%</div>
           </ion-card-header>
           <ion-card-content>
-            <ion-range min="0" max="100" step="1" pin="true">
-              <ion-label slot="start">0%</ion-label>
-              <ion-label slot="end">100%</ion-label>
+            <ion-range
+              min="0"
+              max="100"
+              step="1"
+              pin="true"
+              [(ngModel)]="dashboard.headlight"
+              [style.--bar-background-active]="getSliderColor('headlight')"
+              [style.--knob-background]="'#ffe259'"
+              (ionChange)="updateValue('headlight', $event.detail.value !== null && $event.detail.value !== undefined ? +$event.detail.value : undefined)">
             </ion-range>
-            <ion-input type="number" placeholder="50%"></ion-input>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -66,13 +92,19 @@
           <ion-card-header>
             <ion-icon name="flame-outline"></ion-icon>
             <ion-card-title>Seat Heating</ion-card-title>
+            <div class="value-indicator" [style.color]="getTextColor('seatHeating')">{{dashboard.seatHeating}}</div>
           </ion-card-header>
           <ion-card-content>
-            <ion-range min="0" max="5" step="1" pin="true">
-              <ion-label slot="start">0</ion-label>
-              <ion-label slot="end">5</ion-label>
+            <ion-range
+              min="0"
+              max="5"
+              step="1"
+              pin="true"
+              [(ngModel)]="dashboard.seatHeating"
+              [style.--bar-background-active]="getSliderColor('seatHeating')"
+              [style.--knob-background]="'#ff512f'"
+              (ionChange)="updateValue('seatHeating', $event.detail.value !== null && $event.detail.value !== undefined ? +$event.detail.value : undefined)">
             </ion-range>
-            <ion-input type="number" placeholder="1"></ion-input>
           </ion-card-content>
         </ion-card>
       </ion-col>
